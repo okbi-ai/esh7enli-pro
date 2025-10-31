@@ -1,0 +1,16 @@
+:root{--blue:#0b66b2;--gold:#d4af37;--bg:#f3f7fb;--muted:#666}
+*{box-sizing:border-box}
+body{font-family:Tahoma, Arial, sans-serif;background:var(--bg);margin:0;color:#07223a;transition:background .3s,color .3s}
+.dark-mode body{background:#071029;color:#e6eef9}
+.card{background:white;padding:20px;border-radius:12px;max-width:1100px;margin:20px auto;box-shadow:0 10px 30px rgba(2,6,23,0.06)}
+.hero{padding:30px;text-align:center}
+.hero h1{margin:0 0 10px}
+.cta{margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{background:var(--blue);color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;display:inline-block}
+.btn.outline{background:transparent;color:var(--blue);border:2px solid var(--blue)}
+.features .cols{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.features .col{flex:1;min-width:180px;background:transparent;padding:12px;border-radius:8px}
+input,select,textarea{padding:10px;border-radius:8px;border:1px solid #e3e8ef;width:100%}
+header iframe{width:100%}
+.home{padding:20px}
+@media(max-width:700px){.features .cols{flex-direction:column;align-items:stretch}}

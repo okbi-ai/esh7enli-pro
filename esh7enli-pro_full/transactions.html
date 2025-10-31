@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>سجل الطلبات - اشحنلي برو</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<iframe src="header.html" style="border:none;width:100%;height:72px;" scrolling="no"></iframe>
+<main class="card" style="max-width:900px;margin:30px auto">
+  <h2>سجل الطلبات</h2>
+  <div id="orders"></div>
+</main>
+<script>
+function render(){
+  const root=document.getElementById('orders'); const orders=JSON.parse(localStorage.getItem('esh_orders')||'[]');
+  if(!orders.length){root.innerHTML='<p>لا توجد طلبات حاليا</p>';return;}
+  root.innerHTML='';
+  orders.forEach(o=>{ const div=document.createElement('div'); div.style.padding='10px'; div.style.borderBottom='1px solid #eee'; div.innerHTML=`<strong>${o.network}</strong> - ${o.phone} - ${o.amount} دج <br><small>${o.created} - ${o.status}</small>`; root.appendChild(div); });
+}
+render();
+</script>
+</body>
+</html>

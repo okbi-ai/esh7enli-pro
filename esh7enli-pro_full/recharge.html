@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>شحن الرصيد - اشحنلي برو</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<iframe src="header.html" style="border:none;width:100%;height:72px;" scrolling="no"></iframe>
+<main class="card" style="max-width:520px;margin:30px auto">
+  <h2>شحن الرصيد</h2>
+  <label>اختر الشبكة</label>
+  <select id="network"><option>موبيليس</option><option>جازي</option><option>أوريدو</option></select>
+  <label>رقم الهاتف</label><input id="phone" placeholder="0550xxxxxx">
+  <label>المبلغ (دج)</label><input id="amount" type="number" min="10">
+  <div style="margin-top:12px">
+    <button class="btn" onclick="doRecharge()">تأكيد وإرسال</button>
+    <a class="btn outline" href="dashboard.html">العودة</a>
+  </div>
+  <p class="note">الطلبات تحفظ محليًا وتظهر في سجل الطلبات.</p>
+</main>
+<script>
+function doRecharge(){
+  const network=document.getElementById('network').value;
+  const phone=document.getElementById('phone').value.trim();
+  const amount=document.getElementById('amount').value;
+  if(!phone||!amount){alert('املأ الحقول');return;}
+  const order={id:'ORD_'+Date.now(),network,phone,amount,status:'pending',created:new Date().toLocaleString()};
+  const list=JSON.parse(localStorage.getItem('esh_orders')||'[]'); list.unshift(order); localStorage.setItem('esh_orders',JSON.stringify(list));
+  alert('تم إرسال الطلب'); window.location.href='transactions.html';
+}
+</script>
+</body>
+</html>
