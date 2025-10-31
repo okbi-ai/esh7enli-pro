@@ -1,113 +1,49 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>شحن الرصيد - اشحنلي برو | Esh7enli Pro</title>
-  <style>
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #0a183d, #142d61);
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-      font-size: 1em;
-    }
-    button {
-      background: #00bcd4;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1em;
-      width: 100%;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #0097a7;
-    }
-    .back-btn {
-      margin-top: 15px;
-      color: #ffd700;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اشحنلي برو - صفحة الشحن</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <h2>💰 شحن الرصيد</h2>
-    <p>أدخل بياناتك لإتمام عملية الشحن</p>
+  <header>
+    <h1>💳 اشحنلي برو - صفحة الشحن</h1>
+  </header>
 
-    <label>شركة الاتصالات:</label>
-    <select id="operator">
-      <option value="Mobilis">موبيليس</option>
-      <option value="Djezzy">جازي</option>
-      <option value="Ooredoo">أوريدو</option>
-    </select>
+  <main>
+    <section class="recharge-box">
+      <h2>اختر نوع الشحن</h2>
+      <select id="type">
+        <option value="رصيد">📱 رصيد</option>
+        <option value="إنترنت">🌐 إنترنت</option>
+        <option value="بطاقة ألعاب">🎮 بطاقات الألعاب</option>
+      </select>
 
-    <label>رقم الهاتف:</label>
-    <input type="text" id="phone" placeholder="مثال: 0550123456" maxlength="10" />
+      <h2>اختر الشبكة</h2>
+      <select id="network">
+        <option value="mobilis">📡 موبيليس</option>
+        <option value="djezzy">📡 جيزي</option>
+        <option value="ooredoo">📡 أوريدو</option>
+      </select>
 
-    <label>المبلغ (دج):</label>
-    <input type="number" id="amount" placeholder="أدخل المبلغ" min="50" step="10" />
+      <h2>المبلغ بالدينار الجزائري</h2>
+      <input type="number" id="amount" placeholder="مثال: 200" min="50">
 
-    <button onclick="processRecharge()">تأكيد الشحن</button>
-    <div class="back-btn" onclick="goBack()">🔙 العودة للوحة التحكم</div>
-  </div>
+      <button onclick="confirmRecharge()">✅ تأكيد الشحن</button>
+    </section>
+  </main>
 
   <script>
-    function processRecharge() {
-      const phone = document.getElementById('phone').value.trim();
-      const amount = parseFloat(document.getElementById('amount').value);
-      const operator = document.getElementById('operator').value;
-
-      if (!phone || !amount || isNaN(amount)) {
-        alert('⚠️ يرجى إدخال كل المعلومات بشكل صحيح');
+    function confirmRecharge() {
+      const type = document.getElementById('type').value;
+      const network = document.getElementById('network').value;
+      const amount = document.getElementById('amount').value;
+      if(!amount) {
+        alert('الرجاء إدخال مبلغ الشحن.');
         return;
       }
-
-      // حفظ العملية في التخزين المحلي
-      const transaction = {
-        phone,
-        operator,
-        amount,
-        date: new Date().toLocaleString()
-      };
-
-      let history = JSON.parse(localStorage.getItem('rechargeHistory')) || [];
-      history.push(transaction);
-      localStorage.setItem('rechargeHistory', JSON.stringify(history));
-
-      alert(`✅ تم شحن ${amount} دج بنجاح إلى الرقم ${phone} (${operator})`);
-      window.location.href = 'dashboard.html';
-    }
-
-    function goBack() {
-      window.location.href = 'dashboard.html';
+      alert(`تم إرسال طلب شحن ${type} لشبكة ${network} بمبلغ ${amount} دج ✅`);
     }
   </script>
 </body>
