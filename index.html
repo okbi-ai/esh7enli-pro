@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>اشحنلي برو | Esh7enli Pro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1><span class="gold">اشحنلي</span> برو</h1>
+      <small>Esh7enli Pro</small>
+    </div>
+    <div class="lang-switch">
+      <button id="btn-ar">العربية</button>
+      <button id="btn-en">EN</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="card">
+      <h2 data-i18n="hero_title">خدمة شحن سهلة وآمنة</h2>
+      <p data-i18n="hero_text">اشحن رصيد الهاتف، الإنترنت، وبطاقات الألعاب بسرعة. الدفع يدوي في البداية عبر إرفاق إثبات الدفع.</p>
+      <a href="#order" class="btn" data-i18n="start_btn">ابدأ الآن</a>
+    </section>
+
+    <section id="order" class="card">
+      <h3 data-i18n="order_title">نموذج طلب الشحن</h3>
+      <form id="orderForm">
+        <label data-i18n="field_type">نوع الشحن</label>
+        <select id="serviceType" required>
+          <option value="recharge" data-i18n="opt_recharge">شحن رصيد</option>
+          <option value="internet" data-i18n="opt_internet">شحن إنترنت</option>
+          <option value="game" data-i18n="opt_game">بطاقة ألعاب</option>
+        </select>
+
+        <label data-i18n="field_network">الموبايل / العنوان</label>
+        <input id="target" placeholder="رقم الهاتف أو محفظة" required>
+
+        <label data-i18n="field_amount">المبلغ (دج أو عملة)</label>
+        <input id="amount" type="number" min="1" required>
+
+        <label data-i18n="field_proof">إثبات الدفع (رابط أو نص)</label>
+        <input id="proof" placeholder="مثال: رابط سحب أو رقم تحويل" required>
+
+        <button type="submit" class="btn" data-i18n="submit_btn">إرسال الطلب</button>
+      </form>
+      <p class="note" data-i18n="note_manual">ستُؤكد الطلبات يدويًا من لوحة التحكم. لاحقًا سنربط CCP/البطاقة الذهبية.</p>
+    </section>
+
+    <section class="how card">
+      <h3 data-i18n="how_title">كيف تعمل الخدمة؟</h3>
+      <ol>
+        <li data-i18n="how_step1">أرسل طلب الشحن هنا مع إثبات الدفع.</li>
+        <li data-i18n="how_step2">سوف تتلقى تأكيدًا من لوحة التحكم بعد التحقق.</li>
+        <li data-i18n="how_step3">نقوم بشحن الرصيد أو إرسال الكود.</li>
+      </ol>
+    </section>
+
+    <footer class="card footer">
+      <p>© Esh7enli Pro — جاهز للتجربة على GitHub Pages</p>
+      <p><a href="admin.html">لوحة الإدارة (تجريبية)</a></p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
