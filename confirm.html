@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اشحنلي برو - تأكيد الدفع</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>✅ تأكيد عملية الشحن</h1>
+  </header>
+
+  <main>
+    <section class="recharge-box">
+      <h2>ملخص العملية</h2>
+      <p id="summary">جارٍ تحميل التفاصيل...</p>
+
+      <button onclick="confirmPayment()">💳 تأكيد الدفع</button>
+      <button onclick="window.location.href='recharge.html'">⬅️ رجوع</button>
+    </section>
+  </main>
+
+  <script>
+    // تحميل البيانات من localStorage (اختياري لاحقًا عند ربط النظام)
+    document.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get("type");
+      const network = params.get("network");
+      const amount = params.get("amount");
+      if (type && network && amount) {
+        document.getElementById("summary").innerText =
+          `النوع: ${type}\nالشبكة: ${network}\nالمبلغ: ${amount} دج`;
+      } else {
+        document.getElementById("summary").innerText = "لا توجد بيانات لعرضها.";
+      }
+    });
+
+    function confirmPayment() {
+      alert("✅ تم تأكيد عملية الشحن بنجاح، سيتم تنفيذ الطلب قريبًا!");
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
