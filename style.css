@@ -1,45 +1,74 @@
+/* 🌈 تنسيق عام */
 body {
-  font-family: 'Tahoma', sans-serif;
-  background: linear-gradient(to bottom right, #007BFF, #00C3FF);
+  font-family: "Tajawal", sans-serif;
+  background: linear-gradient(135deg, #0077ff, #00c6ff);
   color: #fff;
   text-align: center;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
+/* رأس الصفحة */
 header {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
 }
 
-h1 {
-  margin: 0;
-  font-size: 26px;
+/* الصندوق الرئيسي */
+.recharge-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease;
 }
 
-main {
-  margin-top: 40px;
+/* عناوين صغيرة */
+h2 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
 }
 
+/* القوائم والحقول */
+select, input {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  text-align: center;
+  color: #333;
+}
+
+/* الأزرار */
 button {
   background-color: #fff;
-  color: #007BFF;
+  color: #0077ff;
   border: none;
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 12px 25px;
   border-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #007BFF;
-  color: white;
+  background-color: #00c6ff;
+  color: #fff;
   transform: scale(1.05);
 }
 
-footer {
-  margin-top: 60px;
-  font-size: 14px;
-  opacity: 0.8;
+/* تأثير الدخول */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
 }
