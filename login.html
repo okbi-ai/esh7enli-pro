@@ -3,60 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>اشحنلي برو - تسجيل الدخول</title>
+  <title>تسجيل الدخول | اشحنلي برو</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #007BFF, #00C3FF);
+      font-family: 'Tahoma', sans-serif;
+    }
+
+    .login-box {
+      background-color: white;
+      color: #007BFF;
+      padding: 40px;
+      border-radius: 20px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fcc;
+    }
+
+    .lang-switch {
+      margin-bottom: 10px;
+    }
+
+    .lang-switch button {
+      background-color: #f0f0f0;
+      color: #007BFF;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 3px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .lang-switch button:hover {
+      background-color: #007BFF;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <div class="login-container">
-    <div class="language-switch">
-      <button onclick="switchLang('ar')">العربية</button>
-      <button onclick="switchLang('en')">English</button>
+  <div class="login-box">
+    <div class="lang-switch">
+      <button onclick="setLang('ar')">عربية</button>
+      <button onclick="setLang('en')">English</button>
     </div>
-
-    <h1 id="title">تسجيل الدخول إلى اشحنلي برو</h1>
-
-    <form id="loginForm" onsubmit="return loginUser(event)">
-      <label for="username" id="labelUser">اسم المستخدم أو البريد</label>
-      <input type="text" id="username" required />
-
-      <label for="password" id="labelPass">كلمة المرور</label>
-      <input type="password" id="password" required />
-
+    <h2 id="title">تسجيل الدخول</h2>
+    <form onsubmit="return login(event)">
+      <input type="text" id="username" placeholder="اسم المستخدم أو البريد" required />
+      <input type="password" id="password" placeholder="كلمة المرور" required />
       <button type="submit" id="loginBtn">دخول</button>
     </form>
-
-    <p id="footerText">© 2025 اشحنلي برو</p>
   </div>
 
   <script>
-    function switchLang(lang) {
-      const ar = {
-        title: "تسجيل الدخول إلى اشحنلي برو",
-        user: "اسم المستخدم أو البريد",
-        pass: "كلمة المرور",
-        btn: "دخول",
-        foot: "© 2025 اشحنلي برو"
-      };
-      const en = {
-        title: "Login to Esh7enli Pro",
-        user: "Username or Email",
-        pass: "Password",
-        btn: "Login",
-        foot: "© 2025 Esh7enli Pro"
-      };
-
-      const data = lang === 'ar' ? ar : en;
-      document.getElementById("title").innerText = data.title;
-      document.getElementById("labelUser").innerText = data.user;
-      document.getElementById("labelPass").innerText = data.pass;
-      document.getElementById("loginBtn").innerText = data.btn;
-      document.getElementById("footerText").innerText = data.foot;
-      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    function setLang(lang) {
+      if (lang === 'en') {
+        document.body.dir = 'ltr';
+        document.getElementById('title').innerText = 'Login';
+        document.getElementById('username').placeholder = 'Username or Email';
+        document.getElementById('password').placeholder = 'Password';
+        document.getElementById('loginBtn').innerText = 'Login';
+      } else {
+        document.body.dir = 'rtl';
+        document.getElementById('title').innerText = 'تسجيل الدخول';
+        document.getElementById('username').placeholder = 'اسم المستخدم أو البريد';
+        document.getElementById('password').placeholder = 'كلمة المرور';
+        document.getElementById('loginBtn').innerText = 'دخول';
+      }
     }
 
-    function loginUser(e) {
+    function login(e) {
       e.preventDefault();
-      window.location.href = "dashboard.html";
+      window.location.href = 'dashboard.html';
     }
   </script>
 </body>
